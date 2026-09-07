@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Контакты BERG HOUSE — строительство МГЭС</title>
   <meta name="description" content="Контакты BERG HOUSE в Кыргызстане: телефон, email, адрес, режим работы и форма обращения по проектированию и строительству МГЭС.">
-<link rel="stylesheet" href="../css/style.css?v=20260913-1">
+<link rel="stylesheet" href="../css/style.css?v=20260913-2">
   <style>
     .contacts-section { padding: 100px 0 140px; }
     .contacts-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 90px; align-items: start; }
@@ -59,18 +59,11 @@
     .form-success-icon { width: 72px; height: 72px; border-radius: 50%; background: var(--dark); color: #fff; font-size: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
     .form-success h3 { font-family: var(--font-display); font-size: 2.2rem; margin-bottom: 12px; }
     .form-success p { color: var(--text-muted); }
-    /* Google map */
+    /* Map */
     .map-section { background: var(--dark); padding: 0; position: relative; overflow: hidden; }
     .google-map-wrap { position: relative; height: 460px; overflow: hidden; border-top: 1px solid rgba(255,255,255,.1); }
     .google-map-wrap::before { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); z-index: 2; }
     .google-map { width: 100%; height: 100%; border: 0; display: block; filter: grayscale(.15) contrast(1.05); }
-    .google-map:not([src]) { display: none; }
-    .map-consent {
-      position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; justify-content: center;
-      padding: 30px 30px 140px; text-align: center;
-      background: radial-gradient(circle at 50% 42%, rgba(55,73,106,.72), rgba(10,29,58,.96));
-    }
-    .map-consent button { min-width: 190px; justify-content: center; }
     .map-card {
       position: absolute; left: 48px; bottom: 38px; z-index: 3;
       max-width: 360px; padding: 24px 28px; background: rgba(255,255,255,.94);
@@ -123,7 +116,7 @@
 <meta name="twitter:image" content="https://bh.kg/assets/og-cover.jpg">
 </head>
 <body>
-<script src="../js/preloader-lock.js?v=20260913-1"></script>
+<script src="../js/preloader-lock.js?v=20260913-2"></script>
 <div class="bhp-loader" id="bhpLoader" role="status" aria-live="polite" aria-label="Загрузка BERG HOUSE">
   <img class="bhp-loader__photo" src="../images/preloader-bg.jpg" alt="" fetchpriority="high" decoding="sync">
   <div class="bhp-loader__scrim" aria-hidden="true"></div>
@@ -170,8 +163,7 @@
 
 <section class="map-section">
   <div class="google-map-wrap">
-    <iframe class="google-map" title="Карта региона работ BERG HOUSE" data-map-src="https://www.openstreetmap.org/export/embed.html?bbox=74.4798%2C42.8246%2C74.6598%2C42.9246&layer=mapnik&marker=42.8746%2C74.5698" data-map-fallback-google="https://www.google.com/maps/search/?api=1&query=42.8746,74.5698" data-map-fallback-yandex="https://yandex.com/maps/?ll=74.5698%2C42.8746&z=13&pt=74.5698%2C42.8746" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    <div class="map-consent" data-map-load><button class="btn btn-brass" type="button">Показать карту</button></div>
+    <iframe class="google-map" data-map-frame title="Карта региона работ BERG HOUSE" src="https://www.openstreetmap.org/export/embed.html?bbox=74.4798%2C42.8246%2C74.6598%2C42.9246&layer=mapnik&marker=42.8746%2C74.5698" data-map-fallback-google="https://www.google.com/maps/search/?api=1&query=42.8746,74.5698" data-map-fallback-yandex="https://yandex.com/maps/?ll=74.5698%2C42.8746&z=13&pt=74.5698%2C42.8746" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <div class="map-card">
       <span class="label">Регион работ</span><strong>Бишкек</strong><span>Кыргызская Республика, Иссык-Кульская обл., Ак-Суйский р-н, с. Джолколот, ул. Айткулиева, д. 75</span>
     </div>
@@ -230,8 +222,8 @@
   </div>
 </footer>
 
-<script src="../js/i18n.js?v=20260913-1"></script>
-<script src="../js/preloader.js?v=20260913-1"></script>
-<script src="../js/main.js?v=20260913-1"></script>
+<script src="../js/i18n.js?v=20260913-2"></script>
+<script src="../js/preloader.js?v=20260913-2"></script>
+<script src="../js/main.js?v=20260913-2"></script>
 </body>
 </html>

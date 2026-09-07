@@ -743,22 +743,16 @@
   createMobileDock();
 
 
-  const loadEmbeddedMap = () => {
-    const frame = document.querySelector('[data-map-src]');
-    if (!frame || frame.getAttribute('src')) return;
+  /* The map loads on its own (no "show map" click needed) — just the
+     fallback safety net stays: if it hasn't rendered within a few seconds
+     of coming into view, swap it for direct links instead of leaving a
+     dead block on the page. */
+  const initMapFallback = () => {
+    const frame = document.querySelector('[data-map-frame]');
+    if (!frame) return;
     const wrap = frame.closest('.google-map-wrap') || frame.parentElement;
     const { mapFallbackGoogle, mapFallbackYandex } = frame.dataset;
 
-    frame.setAttribute('src', frame.dataset.mapSrc);
-    frame.removeAttribute('data-map-src');
-    document.querySelector('[data-map-load]')?.remove();
-
-    /* Cross-origin iframes can't be inspected for whether they actually
-       rendered a map (CORS blocks reading their content), and a network
-       filter or VPN blocking the tile provider often leaves the frame
-       simply hanging with no load/error event at all. A timeout is the
-       only reliable signal available: if the map hasn't announced itself
-       loaded within a few seconds, offer direct links instead. */
     let settled = false;
     const showFallback = () => {
       if (settled || !wrap) return;
@@ -782,12 +776,24 @@
     };
     frame.addEventListener('load', () => { settled = true; }, { once: true });
     frame.addEventListener('error', showFallback, { once: true });
-    window.setTimeout(showFallback, 8000);
-  };
-  document.querySelector('[data-map-load]')?.addEventListener('click', loadEmbeddedMap);
 
-  const cookieConsent = getStored('bh_cookie_consent');
-  if (cookieConsent === 'all') loadEmbeddedMap();
+    /* The iframe is loading="lazy", so the browser only fetches it once it
+       nears the viewport — starting the countdown at page load would fire
+       long before anyone scrolls down to it. Wait until it's actually in
+       view before arming the timeout. */
+    const armTimeout = () => window.setTimeout(showFallback, 8000);
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        armTimeout();
+      }, { rootMargin: '200px' });
+      observer.observe(frame);
+    } else {
+      armTimeout();
+    }
+  };
+  initMapFallback();
 
   const showCookieBanner = () => {
     document.querySelector('.cookie-banner')?.remove();
@@ -797,7 +803,6 @@
     document.body.appendChild(banner);
     banner.querySelector('[data-cookie-accept]').addEventListener('click', () => {
       setStored('bh_cookie_consent','all');
-      loadEmbeddedMap();
       banner.remove();
     });
     banner.querySelector('[data-cookie-necessary]').addEventListener('click', () => { setStored('bh_cookie_consent','necessary'); banner.remove(); });
