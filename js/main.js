@@ -155,8 +155,17 @@
           icon.className = 'mobile-nav-link__icon';
           icon.innerHTML = mobileNavIcons[index] || mobileNavIcons[0];
         }
-        const linkPath = new URL(link.href, location.href).pathname.replace(/\/index\.html$/, '/');
-        const currentPath = location.pathname.replace(/\/index\.html$/, '/');
+        /* Compare paths with the .html extension and any trailing slash
+           stripped — some hosts rewrite "/pages/services.html" to a clean
+           "/pages/services" URL, and a plain string match against the
+           literal href (which still says "services.html") would silently
+           fail to mark that link active. */
+        const normalizePagePath = (pathname) => pathname
+          .replace(/index\.html$/, '')
+          .replace(/\.html$/, '')
+          .replace(/\/+$/, '') || '/';
+        const linkPath = normalizePagePath(new URL(link.href, location.href).pathname);
+        const currentPath = normalizePagePath(location.pathname);
         if (linkPath === currentPath) link.classList.add('active');
       });
 
@@ -684,7 +693,14 @@
   const createMobileDock = () => {
     if (document.querySelector('.mobile-bottom-nav')) return;
     const rootPrefix = inPages ? '../' : '';
-    const currentPath = location.pathname.replace(/\/index\.html$/, '/');
+    /* Same normalization as the off-canvas menu above: strip ".html" and any
+       trailing slash so this still matches on hosts that serve clean URLs
+       (e.g. "/pages/services" instead of "/pages/services.html"). */
+    const normalizePagePath = (pathname) => pathname
+      .replace(/index\.html$/, '')
+      .replace(/\.html$/, '')
+      .replace(/\/+$/, '') || '/';
+    const currentPath = normalizePagePath(location.pathname);
     const items = [
       {
         label: 'Главная',
@@ -695,19 +711,19 @@
       {
         label: 'Услуги',
         href: pagePrefix + 'services.html',
-        match: (path) => path.endsWith('/services.html'),
+        match: (path) => path.endsWith('/services'),
         icon: '<path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/>'
       },
       {
         label: 'Проекты',
         href: pagePrefix + 'projects.html',
-        match: (path) => path.endsWith('/projects.html'),
+        match: (path) => path.endsWith('/projects'),
         icon: '<path d="M4 5.5h16v13H4z"/><path d="m7 15 3.2-3.4 2.5 2.4 2.2-2.1L18 15M8 9h.01"/>'
       },
       {
         label: 'Контакты',
         href: pagePrefix + 'contacts.html',
-        match: (path) => path.endsWith('/contacts.html'),
+        match: (path) => path.endsWith('/contacts'),
         icon: '<path d="M6.8 3.5h3l1.5 4-2 1.6a15 15 0 0 0 5.6 5.6l1.6-2 4 1.5v3c0 1.5-1.3 2.8-2.8 2.7A16.4 16.4 0 0 1 4.1 6.3C4 4.8 5.3 3.5 6.8 3.5Z"/>'
       }
     ];
