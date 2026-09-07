@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Блог о строительстве МГЭС — BERG HOUSE</title>
+<meta name="description" content="Инженерный блог BERG HOUSE о проектировании и строительстве МГЭС, гидротехнических сооружениях, бетоне, оборудовании и эксплуатации.">
+<link rel="stylesheet" href="../css/style.css?v=20260907-1">
+<style>
+.blog-grid-section{padding:90px 0 130px}
+.blog-layout{display:grid;grid-template-columns:repeat(12,1fr);gap:40px 24px}
+.post-featured{grid-column:span 8}
+.post-side{grid-column:span 4}
+.post-card{display:flex;flex-direction:column;cursor:pointer}
+.post-card .img-wrap{overflow:hidden;margin-bottom:22px;position:relative}
+.post-featured .img-wrap{aspect-ratio:16/10}
+.post-side .img-wrap{aspect-ratio:4/3}
+.post-card .img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease-out);display:block}
+.post-card:hover .img-wrap img{transform:scale(1.04)}
+.post-cat{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px}
+.post-card h2{font-family: var(--font-display);font-weight:500;color:var(--text);line-height:1.2;margin-bottom:12px;transition:color .3s}
+.post-card:hover h2{color:var(--brass)}
+.post-featured h2{font-size:clamp(1.5rem,2.2vw,2rem)}
+.post-side h2{font-size:1.25rem}
+.post-card p{font-size:.88rem;color:var(--text-muted);line-height:1.72;margin-bottom:18px;flex:1}
+.post-meta{display:flex;align-items:center;gap:12px;font-size:.72rem;color:var(--text-muted)}
+.post-meta-dot{width:28px;height:28px;border-radius:50%;background:var(--dark);display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700;flex-shrink:0}
+.post-meta-info strong{display:block;font-size:.78rem;color:var(--text);font-weight:600;margin-bottom:1px}
+.post-meta .post-read{margin-left:auto;white-space:nowrap}
+.blog-divider{grid-column:1/-1;height:1px;background:var(--border)}
+.post-small-row{grid-column:span 4;display:flex;gap:16px;cursor:pointer}
+.post-small-row .thumb{width:88px;height:88px;flex-shrink:0;overflow:hidden}
+.post-small-row .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s;display:block}
+.post-small-row:hover .thumb img{transform:scale(1.08)}
+.post-small-row .info .post-cat{margin-bottom:5px}
+.post-small-row .info h3{font-family: var(--font-display);font-size:1rem;font-weight:500;color:var(--text);line-height:1.3;margin-bottom:5px;transition:color .3s}
+.post-small-row:hover .info h3{color:var(--brass)}
+.post-small-row .info span{font-size:.72rem;color:var(--text-muted)}
+.blog-more{text-align:center;margin-top:72px}
+.nl-section{background:var(--dark);padding:90px 0}
+.nl-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.nl-heading{font-family: var(--font-display);font-size:clamp(2rem,3.5vw,3rem);font-weight:600;color:#fff;line-height:1.15}
+.nl-heading em{font-style:italic;color:var(--gold)}
+.nl-sub{font-size:.9rem;color:rgba(255,255,255,.45);margin-top:14px;line-height:1.7}
+.nl-form{display:flex;gap:0}
+.nl-input{flex:1;padding:16px 20px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.12);border-right:none;color:#fff;font-family: var(--font-main);font-size:.88rem;outline:none;transition:border-color .3s}
+.nl-input::placeholder{color:rgba(255,255,255,.3)}
+.nl-input:focus{border-color:rgba(255,255,255,.35)}
+.nl-btn{padding:16px 28px;background:var(--gold);border:1.5px solid var(--gold);color:#fff;font-family: var(--font-main);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background .3s}
+.nl-btn:hover{background:var(--brand-steel);border-color:var(--brand-steel)}
+.nl-note{font-size:.7rem;color:rgba(255,255,255,.3);margin-top:12px}
+@media(max-width:960px){.post-featured,.post-side{grid-column:1/-1}.post-small-row{grid-column:span 6}.nl-inner{grid-template-columns:1fr;gap:48px}}
+@media(max-width:640px){.post-small-row{grid-column:1/-1}.nl-form{flex-direction:column}.nl-input{border-right:1.5px solid rgba(255,255,255,.12);border-bottom:none}}
+</style>
+<link rel="icon" href="../favicon.ico?v=3" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png?v=3">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16.png?v=3">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png?v=3">
+<meta name="theme-color" content="#070B16">
+<link rel="canonical" href="https://bh.kg/pages/blog.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BERG HOUSE">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://bh.kg/pages/blog.html">
+<meta property="og:title" content="Блог о строительстве МГЭС — BERG HOUSE">
+<meta property="og:description" content="Инженерный блог BERG HOUSE о проектировании и строительстве МГЭС, гидротехнических сооружениях, бетоне, оборудовании и эксплуатации.">
+<meta property="og:image" content="https://bh.kg/assets/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="BERG HOUSE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Блог о строительстве МГЭС — BERG HOUSE">
+<meta name="twitter:description" content="Инженерный блог BERG HOUSE о проектировании и строительстве МГЭС, гидротехнических сооружениях, бетоне, оборудовании и эксплуатации.">
+<meta name="twitter:image" content="https://bh.kg/assets/og-cover.jpg">
+</head>
+<body>
+<script src="../js/preloader-lock.js?v=20260907-1"></script>
+<div class="bhp-loader" id="bhpLoader" role="status" aria-live="polite" aria-label="Загрузка BERG HOUSE">
+  <img class="bhp-loader__photo" src="../images/preloader-bg.jpg" alt="" fetchpriority="high" decoding="sync">
+  <div class="bhp-loader__scrim" aria-hidden="true"></div>
+  <div class="bhp-loader__glow" aria-hidden="true"></div>
+  <div class="bhp-loader__inner">
+    <div class="bhp-loader__rail" aria-hidden="true"><span></span></div>
+    <span class="bhp-loader__caption" id="bhpLoaderCaption">Готовим страницу</span>
+  </div>
+</div>
+
+<div class="page-shell">
+<header class="header" id="header">
+  <div class="container">
+    <nav class="nav-inner">
+      <a href="../index.html" class="logo" aria-label="BERG HOUSE — на главную">
+          <img class="logo-img logo-img--dark" src="../assets/brand-logo-dark.png" alt="" aria-hidden="true">
+          <img class="logo-img logo-img--light" src="../assets/brand-logo-light.png" alt="" aria-hidden="true">
+        </a>
+      <ul class="nav-list">
+        <li><a href="about.html" class="nav-link">О компании</a></li>
+        <li><a href="services.html" class="nav-link">Услуги</a></li>
+        <li><a href="projects.html" class="nav-link">Проекты</a></li>
+        <li><a href="blog.html" class="nav-link active">Блог</a></li>
+        <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+      </ul>
+      <a href="contacts.html" class="nav-cta">Получить консультацию</a>
+      <button class="hamburger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<div class="mobile-nav">
+  <ul class="mobile-nav-list">
+    <li><a href="about.html" class="mobile-nav-link"><span>01</span> О компании</a></li>
+    <li><a href="services.html" class="mobile-nav-link"><span>02</span> Услуги</a></li>
+    <li><a href="projects.html" class="mobile-nav-link"><span>03</span> Проекты</a></li>
+    <li><a href="blog.html" class="mobile-nav-link"><span>04</span> Блог</a></li>
+    <li><a href="contacts.html" class="mobile-nav-link"><span>05</span> Контакты</a></li>
+  </ul>
+  <div class="mobile-nav-contacts">
+    <a href="tel:+996554444448">+996 554 444 448</a>
+    <a href="mailto:info@bh.kg">info@bh.kg</a>
+  </div>
+</div>
+
+<section class="page-hero"><img class="page-hero-bg" src="../images/stock/design-blueprint.jpg" alt="" loading="lazy" aria-hidden="true"><div class="container"><div class="page-hero-content"><nav class="breadcrumb"><a href="../index.html">Главная</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Блог</span></nav><span class="label">Инженерные материалы</span><h1 data-i18n-heading="blog-hero">Заметки об <em>энергетике</em><br>и гидростроительстве</h1><p>Материалы раздела готовятся к публикации. На сайте нет выдуманных кейсов, дат и авторов.</p></div></div></section>
+
+<section class="blog-grid-section"><div class="container"><div class="blog-layout"><article class="post-card post-featured rev" data-modal-title="Что входит в строительство станции" data-modal-kicker="Материал готовится" data-modal-text="Раздел будет описывать исследования, проектирование, гидротехнические сооружения, оборудование, монтаж, пусконаладку и сервис."><div class="img-wrap"><img src="../images/stock/site-aerial.jpg" alt="Строительство станции"></div><span class="post-cat">Энергетика</span><h2>Что входит в строительство малой гидроэлектростанции</h2><p>Материал будет раскрывать полный цикл работ: от анализа площадки до ввода станции в эксплуатацию.</p><div class="post-meta"><div class="post-meta-dot">BH</div><div class="post-meta-info"><strong>Редакция BERG HOUSE</strong><span>Материал готовится к публикации</span></div><span class="post-read">Открыть</span></div></article><article class="post-card post-side rev d1" data-modal-title="Гидротехнические сооружения" data-modal-kicker="Материал готовится" data-modal-text="Будет описана роль водозабора, деривации, трубопроводов, водосбросов и здания ГЭС."><div class="img-wrap"><img src="../images/stock/site-rebar.jpg" alt="Гидротехнические сооружения"></div><span class="post-cat">Гидростроительство</span><h2>Ключевые сооружения водного тракта</h2><p>Водозабор, деривация, напорный трубопровод и здание станции требуют согласованной инженерной логики.</p><div class="post-meta"><div class="post-meta-dot">BH</div><div class="post-meta-info"><strong>BERG HOUSE</strong><span>Без неподтвержденных данных</span></div></div></article><div class="blog-divider"></div><article class="post-small-row rev" data-modal-title="Контроль бетона" data-modal-text="Материал будет посвящен входному контролю материалов, армированию, бетонированию и испытаниям."><div class="thumb"><img src="../images/stock/design-blueprint-sm.jpg" alt="Контроль бетона"></div><div class="info"><span class="post-cat">Качество</span><h3>Контроль бетонных работ на гидросооружениях</h3><span>Материал готовится</span></div></article><article class="post-small-row rev d1" data-modal-title="Оборудование станции" data-modal-text="Гидротурбины, генераторы, автоматика, КРУ, затворы и металлоконструкции подбираются под параметры проекта."><div class="thumb"><img src="../images/stock/dam-discharge-sm.jpg" alt="Оборудование станции"></div><div class="info"><span class="post-cat">Оборудование</span><h3>Что входит в комплект станции</h3><span>Материал готовится</span></div></article><article class="post-small-row rev d2" data-modal-title="Пусконаладка" data-modal-text="Испытания, настройка автоматики и подготовка к работе завершают строительный цикл."><div class="thumb"><img src="../images/stock/dam-spillway-sm.jpg" alt="Пусконаладка"></div><div class="info"><span class="post-cat">Запуск</span><h3>Пусконаладка и ввод станции</h3><span>Материал готовится</span></div></article></div></div></section>
+
+<section class="nl-section"><div class="container"><div class="nl-inner"><div class="rev"><h2 class="nl-heading">Инженерные материалы —<br><em>в вашу почту</em></h2><p class="nl-sub">Оставьте email, если хотите получать обновления раздела. Без спама.</p></div><div class="rev d1"><form class="nl-form contact-form" novalidate><input type="email" class="nl-input" placeholder="Ваш email" required><button type="submit" class="nl-btn">Подписаться</button></form><p class="nl-note">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p></div></div></div></section>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo" aria-label="BERG HOUSE — на главную">
+          <img class="logo-img logo-img--dark" src="../assets/brand-logo-dark.png" alt="" aria-hidden="true">
+          <img class="logo-img logo-img--light" src="../assets/brand-logo-light.png" alt="" aria-hidden="true">
+        </a>
+        <p class="footer-brand-desc">BERG HOUSE проектирует и строит малые гидроэлектростанции, гидротехнические сооружения и инженерную инфраструктуру. Текущий фокус компании — объекты в Бишкеке.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Услуги</div>
+        <ul class="footer-links">
+          <li><a href="services.html">Строительство под ключ</a></li>
+          <li><a href="services.html">Инженерное проектирование</a></li>
+          <li><a href="services.html">Гидротехнические сооружения</a></li>
+          <li><a href="services.html">Поставка оборудования</a></li>
+          <li><a href="services.html">Монтаж и пусконаладка</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">О компании</div>
+        <ul class="footer-links">
+          <li><a href="about.html">О компании</a></li>
+          <li><a href="projects.html">Проекты</a></li>
+          <li><a href="blog.html">Блог</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+          <li><a href="privacy.html">Политика конфиденциальности</a></li>
+          <li><a href="cookies.html">Cookie-файлы</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Контакты</div>
+        <div class="footer-contact-row"><span class="footer-contact-icon footer-icon footer-icon--pin" aria-hidden="true"></span><span>Кыргызская Республика, Иссык-Кульская обл., Ак-Суйский р-н, с. Джолколот, ул. Айткулиева, д. 75</span></div>
+        <div class="footer-contact-row"><span class="footer-contact-icon footer-icon footer-icon--phone" aria-hidden="true"></span><a href="tel:+996554444448">+996 554 444 448</a></div>
+        <div class="footer-contact-row"><span class="footer-contact-icon">@</span><a href="mailto:info@bh.kg">info@bh.kg</a></div>
+        <div class="footer-contact-row"><span class="footer-contact-icon footer-icon footer-icon--clock" aria-hidden="true"></span><span>Пн-Сб: 08:00 - 18:00</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&#169; 2026 Berg House. &#1042;&#1089;&#1077; &#1087;&#1088;&#1072;&#1074;&#1072; &#1079;&#1072;&#1097;&#1080;&#1097;&#1077;&#1085;&#1099;.</span>
+      <div class="footer-socials"><a href="tel:+996554444448" class="footer-social" aria-label="Контакты"><span class="footer-icon footer-icon--phone" aria-hidden="true"></span></a><a href="mailto:info@bh.kg" class="footer-social" aria-label="Email">@</a></div>
+      <a href="privacy.html" style="color:inherit;text-decoration:none;font-size:.74rem">Политика конфиденциальности</a>
+      <a href="cookies.html" style="color:inherit;text-decoration:none;font-size:.74rem">Cookie-файлы</a>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">BERG HOUSE</div>
+  </div>
+</footer>
+
+<script src="../js/i18n.js?v=20260907-1"></script>
+<script src="../js/preloader.js?v=20260907-1"></script>
+<script src="../js/main.js?v=20260907-1"></script>
+
+</body>
+</html>

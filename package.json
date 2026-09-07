@@ -1,0 +1,13 @@
+{
+  "name": "berg-house-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "check": "node --check server.js && node --check js/main.js && node --check js/i18n.js && node --check js/preloader-lock.js && node --check js/preloader.js && node --check scripts/build-release.js && node --check scripts/security-smoke.js && node --check scripts/site-smoke.js",
+    "release": "node scripts/build-release.js",
+    "security-check": "node scripts/security-smoke.js",
+    "site-check": "node scripts/site-smoke.js"
+  }
+}

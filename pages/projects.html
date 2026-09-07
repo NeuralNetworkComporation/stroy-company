@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Проекты МГЭС — BERG HOUSE</title>
+  <meta name="description" content="Проекты и структура паспортов объектов BERG HOUSE: МГЭС, водозаборы, деривационные сооружения, бетонные работы, оборудование и сервис.">
+<link rel="stylesheet" href="../css/style.css?v=20260907-1">
+  <style>
+    .portfolio { padding: 100px 0 140px; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pcard { cursor: pointer; }
+    .pcard-img-wrap { position: relative; overflow: hidden; }
+    .pcard-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.8s var(--ease-out); filter: brightness(0.97); }
+    .pcard.featured .pcard-img { aspect-ratio: 16/7; }
+    .pcard:hover .pcard-img { transform: scale(1.05); filter: brightness(0.88); }
+    .pcard-overlay { position: absolute; inset: 0; background: rgba(10,29,58,0); display: flex; align-items: center; justify-content: center; transition: background 0.45s; }
+    .pcard:hover .pcard-overlay { background: rgba(10,29,58,0.48); }
+    .pcard-view {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 13px 28px; border: 1.5px solid rgba(255,255,255,0.6);
+      font-family: var(--font-main);
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: #fff; text-decoration: none;
+      opacity: 0; transform: translateY(10px) scale(0.97);
+      transition: opacity 0.35s, transform 0.4s var(--ease-out), border-color 0.3s, color 0.3s;
+    }
+    .pcard:hover .pcard-view { opacity: 1; transform: translateY(0) scale(1); }
+    .pcard-view:hover { border-color: var(--gold); color: var(--gold); }
+    .pcard-body { padding: 20px 0 28px; border-bottom: 1px solid var(--border); }
+    .pcard-body .pcard-cat { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 7px; font-weight: 700; }
+    .pcard-body .pcard-name { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; color: var(--text); line-height: 1.25; margin-bottom: 4px; }
+    .pcard-body .pcard-meta { font-size: 0.78rem; color: var(--text-muted); }
+    .pcard.featured { grid-column: span 2; }
+    @media (max-width: 960px) { .portfolio-grid { grid-template-columns: 1fr 1fr; } .pcard.featured { grid-column: span 2; } }
+    @media (max-width: 640px) { .portfolio-grid { grid-template-columns: 1fr; } .pcard.featured { grid-column: span 1; } .pcard.featured .pcard-img { aspect-ratio: 4/3; } }
+  </style>
+  <link rel="icon" href="../favicon.ico?v=3" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16.png?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png?v=3">
+  <meta name="theme-color" content="#070B16">
+<link rel="canonical" href="https://bh.kg/pages/projects.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BERG HOUSE">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://bh.kg/pages/projects.html">
+<meta property="og:title" content="Проекты МГЭС — BERG HOUSE">
+<meta property="og:description" content="Проекты и структура паспортов объектов BERG HOUSE: МГЭС, водозаборы, деривационные сооружения, бетонные работы, оборудование и сервис.">
+<meta property="og:image" content="https://bh.kg/assets/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="BERG HOUSE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Проекты МГЭС — BERG HOUSE">
+<meta name="twitter:description" content="Проекты и структура паспортов объектов BERG HOUSE: МГЭС, водозаборы, деривационные сооружения, бетонные работы, оборудование и сервис.">
+<meta name="twitter:image" content="https://bh.kg/assets/og-cover.jpg">
+</head>
+<body>
+<script src="../js/preloader-lock.js?v=20260907-1"></script>
+<div class="bhp-loader" id="bhpLoader" role="status" aria-live="polite" aria-label="Загрузка BERG HOUSE">
+  <img class="bhp-loader__photo" src="../images/preloader-bg.jpg" alt="" fetchpriority="high" decoding="sync">
+  <div class="bhp-loader__scrim" aria-hidden="true"></div>
+  <div class="bhp-loader__glow" aria-hidden="true"></div>
+  <div class="bhp-loader__inner">
+    <div class="bhp-loader__rail" aria-hidden="true"><span></span></div>
+    <span class="bhp-loader__caption" id="bhpLoaderCaption">Готовим страницу</span>
+  </div>
+</div>
+
+<div class="page-shell">
+<header class="header" id="header">
+  <div class="container">
+    <nav class="nav-inner">
+      <a href="../index.html" class="logo" aria-label="BERG HOUSE — на главную">
+          <img class="logo-img logo-img--dark" src="../assets/brand-logo-dark.png" alt="" aria-hidden="true">
+          <img class="logo-img logo-img--light" src="../assets/brand-logo-light.png" alt="" aria-hidden="true">
+        </a>
+      <ul class="nav-list">
+        <li><a href="about.html" class="nav-link">О компании</a></li>
+        <li><a href="services.html" class="nav-link">Услуги</a></li>
+        <li><a href="projects.html" class="nav-link active">Проекты</a></li>
+        <li><a href="blog.html" class="nav-link">Блог</a></li>
+        <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+      </ul>
+      <a href="contacts.html" class="nav-cta">Получить консультацию</a>
+      <button class="hamburger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+<div class="mobile-nav">
+  <ul class="mobile-nav-list">
+    <li><a href="about.html" class="mobile-nav-link"><span>01</span> О компании</a></li>
+    <li><a href="services.html" class="mobile-nav-link"><span>02</span> Услуги</a></li>
+    <li><a href="projects.html" class="mobile-nav-link"><span>03</span> Проекты</a></li>
+    <li><a href="blog.html" class="mobile-nav-link"><span>04</span> Блог</a></li>
+    <li><a href="contacts.html" class="mobile-nav-link"><span>05</span> Контакты</a></li>
+  </ul>
+</div>
+
+<section class="page-hero"><img class="page-hero-bg" src="../images/stock/site-aerial.jpg" alt="" loading="lazy" aria-hidden="true"><div class="container"><div class="page-hero-content"><nav class="breadcrumb"><a href="../index.html">Главная</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Проекты</span></nav><span class="label">Портфолио</span><h1>Наши <em>реализованные</em><br>объекты</h1><p>На странице нет фильтров и выдуманных кейсов. Карточки описывают структуру будущей публикации: фактические данные появятся только после согласования с заказчиком.</p></div></div></section>
+
+<section class="portfolio"><div class="container"><div class="portfolio-grid" id="portfolioGrid"><div class="pcard featured rev d0" data-modal-title="Паспорт объекта" data-modal-kicker="Проекты в Бишкеке" data-modal-text="Местоположение, мощность, состав сооружений, оборудование и результат будут указаны только по подтвержденным данным заказчика."><div class="pcard-img-wrap"><img class="pcard-img" src="../images/stock/site-aerial.jpg" alt="Паспорт объекта" loading="lazy"><div class="pcard-overlay"><span class="pcard-view">Открыть карточку →</span></div></div><div class="pcard-body"><span class="pcard-cat">Публикуется после согласования</span><div class="pcard-name">Паспорт объекта</div><div class="pcard-meta">Бишкек · данные публикуются после согласования</div></div></div><div class="pcard  rev d1" data-modal-title="Водозаборный узел" data-modal-kicker="Проекты в Бишкеке" data-modal-text="Описание водозабора, затворов, защиты от наносов и эксплуатационных решений без выдуманных чисел."><div class="pcard-img-wrap"><img class="pcard-img" src="../images/stock/site-rebar.jpg" alt="Водозаборный узел" loading="lazy"><div class="pcard-overlay"><span class="pcard-view">Открыть карточку →</span></div></div><div class="pcard-body"><span class="pcard-cat">Типовой состав карточки</span><div class="pcard-name">Водозаборный узел</div><div class="pcard-meta">Бишкек · данные публикуются после согласования</div></div></div><div class="pcard  rev d2" data-modal-title="Деривационный тракт" data-modal-kicker="Проекты в Бишкеке" data-modal-text="Карточка для канала, трубопровода, водосброса и сопряжения с машинным залом."><div class="pcard-img-wrap"><img class="pcard-img" src="../images/stock/dam-mountain.jpg" alt="Деривационный тракт" loading="lazy"><div class="pcard-overlay"><span class="pcard-view">Открыть карточку →</span></div></div><div class="pcard-body"><span class="pcard-cat">Гидротехническая часть</span><div class="pcard-name">Деривационный тракт</div><div class="pcard-meta">Бишкек · данные публикуются после согласования</div></div></div><div class="pcard  rev d3" data-modal-title="Здание ГЭС и оборудование" data-modal-kicker="Проекты в Бишкеке" data-modal-text="Раздел для компоновки машинного зала, турбин, генераторов и электротехнической части."><div class="pcard-img-wrap"><img class="pcard-img" src="../images/stock/dam-discharge.jpg" alt="Здание ГЭС и оборудование" loading="lazy"><div class="pcard-overlay"><span class="pcard-view">Открыть карточку →</span></div></div><div class="pcard-body"><span class="pcard-cat">Оборудование и монтаж</span><div class="pcard-name">Здание ГЭС и оборудование</div><div class="pcard-meta">Бишкек · данные публикуются после согласования</div></div></div><div class="pcard featured rev d4" data-modal-title="Монолитные работы" data-modal-kicker="Проекты в Бишкеке" data-modal-text="Фотофиксация армирования, опалубки, бетонирования, испытаний и исполнительной документации."><div class="pcard-img-wrap"><img class="pcard-img" src="../images/stock/design-blueprint.jpg" alt="Монолитные работы" loading="lazy"><div class="pcard-overlay"><span class="pcard-view">Открыть карточку →</span></div></div><div class="pcard-body"><span class="pcard-cat">Контроль качества</span><div class="pcard-name">Монолитные работы</div><div class="pcard-meta">Бишкек · данные публикуются после согласования</div></div></div><div class="pcard  rev d4" data-modal-title="Сервис станции" data-modal-kicker="Проекты в Бишкеке" data-modal-text="Гарантийное и сервисное сопровождение после ввода объекта в эксплуатацию."><div class="pcard-img-wrap"><img class="pcard-img" src="../images/stock/dam-spillway.jpg" alt="Сервис станции" loading="lazy"><div class="pcard-overlay"><span class="pcard-view">Открыть карточку →</span></div></div><div class="pcard-body"><span class="pcard-cat">После запуска</span><div class="pcard-name">Сервис станции</div><div class="pcard-meta">Бишкек · данные публикуются после согласования</div></div></div></div></div></section>
+
+<section class="cta" style="padding: 100px 0;">
+  <img class="cta-bg-img" src="../images/stock/site-rebar.jpg" alt="" loading="lazy" aria-hidden="true">
+  <div class="container">
+    <div class="cta-content">
+      <span class="label rev">Следующий проект — ваш</span>
+      <h2 class="rev d1"><em>Обсудим</em> вашу задачу?</h2>
+      <p class="rev d2">Расскажите о площадке проекта — мы предложим следующий инженерный шаг без публикации конфиденциальных данных.</p>
+      <div class="cta-actions rev d3">
+        <a href="contacts.html" class="btn btn-white">Оставить заявку</a>
+        <a href="tel:+996554444448" class="btn btn-outline-white">+996 554 444 448</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo" aria-label="BERG HOUSE — на главную">
+          <img class="logo-img logo-img--dark" src="../assets/brand-logo-dark.png" alt="" aria-hidden="true">
+          <img class="logo-img logo-img--light" src="../assets/brand-logo-light.png" alt="" aria-hidden="true">
+        </a>
+        <p class="footer-brand-desc">BERG HOUSE проектирует и строит малые гидроэлектростанции, гидротехнические сооружения и инженерную инфраструктуру. Текущий фокус компании — объекты в Бишкеке.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Услуги</div>
+        <ul class="footer-links">
+          <li><a href="services.html">Строительство под ключ</a></li>
+          <li><a href="services.html">Инженерное проектирование</a></li>
+          <li><a href="services.html">Гидротехнические сооружения</a></li>
+          <li><a href="services.html">Поставка оборудования</a></li>
+          <li><a href="services.html">Монтаж и пусконаладка</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">О компании</div>
+        <ul class="footer-links">
+          <li><a href="about.html">О компании</a></li>
+          <li><a href="projects.html">Проекты</a></li>
+          <li><a href="blog.html">Блог</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+          <li><a href="privacy.html">Политика конфиденциальности</a></li>
+          <li><a href="cookies.html">Cookie-файлы</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Контакты</div>
+        <div class="footer-contact-row"><span class="footer-contact-icon footer-icon footer-icon--pin" aria-hidden="true"></span><span>Кыргызская Республика, Иссык-Кульская обл., Ак-Суйский р-н, с. Джолколот, ул. Айткулиева, д. 75</span></div>
+        <div class="footer-contact-row"><span class="footer-contact-icon footer-icon footer-icon--phone" aria-hidden="true"></span><a href="tel:+996554444448">+996 554 444 448</a></div>
+        <div class="footer-contact-row"><span class="footer-contact-icon">@</span><a href="mailto:info@bh.kg">info@bh.kg</a></div>
+        <div class="footer-contact-row"><span class="footer-contact-icon footer-icon footer-icon--clock" aria-hidden="true"></span><span>Пн-Сб: 08:00 - 18:00</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&#169; 2026 Berg House. &#1042;&#1089;&#1077; &#1087;&#1088;&#1072;&#1074;&#1072; &#1079;&#1072;&#1097;&#1080;&#1097;&#1077;&#1085;&#1099;.</span>
+      <div class="footer-socials"><a href="tel:+996554444448" class="footer-social" aria-label="Контакты"><span class="footer-icon footer-icon--phone" aria-hidden="true"></span></a><a href="mailto:info@bh.kg" class="footer-social" aria-label="Email">@</a></div>
+      <a href="privacy.html" style="color:inherit;text-decoration:none;font-size:.74rem">Политика конфиденциальности</a>
+      <a href="cookies.html" style="color:inherit;text-decoration:none;font-size:.74rem">Cookie-файлы</a>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">BERG HOUSE</div>
+  </div>
+</footer>
+
+<script src="../js/i18n.js?v=20260907-1"></script>
+<script src="../js/preloader.js?v=20260907-1"></script>
+<script src="../js/main.js?v=20260907-1"></script>
+
+</body>
+</html>
