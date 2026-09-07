@@ -3224,6 +3224,44 @@ a[href^="tel:"] {
   -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E");
   mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E");
 }
+.footer-icon--mail {
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5h16v14H4z'/%3E%3Cpath d='m4 6 8 6.5L20 6'/%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5h16v14H4z'/%3E%3Cpath d='m4 6 8 6.5L20 6'/%3E%3C/svg%3E");
+}
+
+/* ── LINE-ICON GLYPHS ──
+   Same mask-image + currentColor technique as .footer-icon above — crisp,
+   single-color, theme-consistent, and renders the same on every device
+   (unlike emoji, which vary wildly across platforms and sometimes render
+   as a pale/monochrome glyph instead of the colored version). Used for
+   the contact-info and standards-card icons. */
+.icon-mask {
+  display:inline-block;
+  background-color:currentColor;
+  -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+  -webkit-mask-position:center; mask-position:center;
+  -webkit-mask-size:contain; mask-size:contain;
+}
+.icon-mask--mail {
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5h16v14H4z'/%3E%3Cpath d='m4 6 8 6.5L20 6'/%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5h16v14H4z'/%3E%3Cpath d='m4 6 8 6.5L20 6'/%3E%3C/svg%3E");
+}
+.icon-mask--document {
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 3h9l5 5v13H6z'/%3E%3Cpath d='M15 3v5h5'/%3E%3Cpath d='M8.5 12h7M8.5 16h7'/%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 3h9l5 5v13H6z'/%3E%3Cpath d='M15 3v5h5'/%3E%3Cpath d='M8.5 12h7M8.5 16h7'/%3E%3C/svg%3E");
+}
+.icon-mask--check {
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='m8.2 12.5 2.4 2.4 5-5.8'/%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='m8.2 12.5 2.4 2.4 5-5.8'/%3E%3C/svg%3E");
+}
+.icon-mask--flag {
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 21V4'/%3E%3Cpath d='M6 4.5h12l-2.7 4L18 12.5H6'/%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 21V4'/%3E%3Cpath d='M6 4.5h12l-2.7 4L18 12.5H6'/%3E%3C/svg%3E");
+}
+.icon-mask--gear {
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='3.3'/%3E%3Cpath d='M12 3.2v3M12 17.8v3M20.8 12h-3M6.2 12h-3M17.9 6.1l-2.1 2.1M8.2 15.8l-2.1 2.1M17.9 17.9l-2.1-2.1M8.2 8.2 6.1 6.1'/%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='3.3'/%3E%3Cpath d='M12 3.2v3M12 17.8v3M20.8 12h-3M6.2 12h-3M17.9 6.1l-2.1 2.1M8.2 15.8l-2.1 2.1M17.9 17.9l-2.1-2.1M8.2 8.2 6.1 6.1'/%3E%3C/svg%3E");
+}
 
 @media (max-width:640px) {
   .partners::after,
