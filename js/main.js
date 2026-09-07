@@ -746,9 +746,43 @@
   const loadEmbeddedMap = () => {
     const frame = document.querySelector('[data-map-src]');
     if (!frame || frame.getAttribute('src')) return;
+    const wrap = frame.closest('.google-map-wrap') || frame.parentElement;
+    const { mapFallbackGoogle, mapFallbackYandex } = frame.dataset;
+
     frame.setAttribute('src', frame.dataset.mapSrc);
     frame.removeAttribute('data-map-src');
     document.querySelector('[data-map-load]')?.remove();
+
+    /* Cross-origin iframes can't be inspected for whether they actually
+       rendered a map (CORS blocks reading their content), and a network
+       filter or VPN blocking the tile provider often leaves the frame
+       simply hanging with no load/error event at all. A timeout is the
+       only reliable signal available: if the map hasn't announced itself
+       loaded within a few seconds, offer direct links instead. */
+    let settled = false;
+    const showFallback = () => {
+      if (settled || !wrap) return;
+      settled = true;
+      frame.remove();
+      const fallback = document.createElement('div');
+      fallback.className = 'map-fallback';
+      const links = [
+        mapFallbackGoogle && ['Google Карты', mapFallbackGoogle],
+        mapFallbackYandex && ['Яндекс Карты', mapFallbackYandex],
+      ].filter(Boolean);
+      fallback.innerHTML =
+        '<p class="map-fallback__title">Карта не загрузилась</p>' +
+        '<p class="map-fallback__hint">Возможная причина — VPN или блокировка стороннего контента. Откройте адрес напрямую:</p>' +
+        '<div class="map-fallback__links">' +
+        links.map(([label, href]) =>
+          `<a class="btn btn-brass" href="${href}" target="_blank" rel="noopener noreferrer">${label}</a>`
+        ).join('') +
+        '</div>';
+      wrap.appendChild(fallback);
+    };
+    frame.addEventListener('load', () => { settled = true; }, { once: true });
+    frame.addEventListener('error', showFallback, { once: true });
+    window.setTimeout(showFallback, 8000);
   };
   document.querySelector('[data-map-load]')?.addEventListener('click', loadEmbeddedMap);
 

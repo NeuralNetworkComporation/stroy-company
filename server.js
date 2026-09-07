@@ -78,7 +78,7 @@ const securityHeaders = () => {
     "font-src 'self' data:",
     "form-action 'self'",
     "frame-ancestors 'none'",
-    "frame-src https://www.google.com",
+    "frame-src https://www.openstreetmap.org",
     "img-src 'self' data:",
     "media-src 'self' https://cdn.peri.cloud",
     "object-src 'none'",
