@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Место для фотографии">
+  <defs>
+    <pattern id="pl-diag-a" width="52" height="52" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="52" stroke="#F5A623" stroke-opacity=".07" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="pl-fade-a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0A1D3A"/>
+      <stop offset="1" stop-color="#070B16"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#pl-fade-a)"/>
+  <rect width="1200" height="900" fill="url(#pl-diag-a)"/>
+  <rect x="34" y="34" width="1132" height="832" fill="none" stroke="#ffffff" stroke-opacity=".14"/>
+  <g transform="translate(600 372)" fill="none" stroke="#F5A623" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="-92" y="-70" width="184" height="140" rx="10"/>
+    <circle cx="0" cy="4" r="40"/>
+    <path d="M-52 -70l22 -30h60l22 30"/>
+  </g>
+  <text x="600" y="560" text-anchor="middle" fill="#F5A623" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" letter-spacing="7">МЕСТО ДЛЯ ФОТО</text>
+  <text x="600" y="628" text-anchor="middle" fill="#ffffff" fill-opacity=".82" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700">Сварка и монтаж</text>
+  <text x="600" y="684" text-anchor="middle" fill="#ffffff" fill-opacity=".82" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700">напорного трубопровода</text>
+  <text x="600" y="748" text-anchor="middle" fill="#ffffff" fill-opacity=".42" font-family="Arial, Helvetica, sans-serif" font-size="26">перспектива трассы, сварные стыки, опоры</text>
+</svg>
