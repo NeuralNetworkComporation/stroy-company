@@ -849,8 +849,56 @@
     });
   };
 
+  /* Videos show a local poster until the viewer presses play, so opening a
+     project card costs nothing extra and reaches YouTube only on demand. */
+  const YOUTUBE_ORIGIN = 'https://www.youtube-nocookie.com';
+  const showVideoFallback = (holder) => {
+    const fallback = document.createElement('div');
+    fallback.className = 'pd-video-fallback';
+    fallback.innerHTML =
+      '<p class="pd-video-fallback__title">Видео не загрузилось</p>' +
+      '<p class="pd-video-fallback__hint">Возможная причина — VPN или блокировка стороннего контента.</p>' +
+      '<a class="btn btn-brass" href="' + holder.dataset.videoLink + '" target="_blank" rel="noopener noreferrer">Смотреть на YouTube</a>';
+    holder.replaceChildren(fallback);
+    window.BH_I18N?.apply(fallback);
+  };
+  const playVideo = (holder, title) => {
+    const frame = document.createElement('iframe');
+    frame.title = title;
+    frame.allow = 'autoplay; encrypted-media; picture-in-picture';
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    frame.allowFullscreen = true;
+    frame.src = holder.dataset.videoSrc;
+    holder.replaceChildren(frame);
+
+    /* A blocked YouTube still fires `load` — the browser renders its own error
+       page inside the frame — so ask the player instead: only a real embed
+       answers the widget handshake. */
+    let answered = false;
+    const onMessage = (event) => {
+      if (event.source === frame.contentWindow) answered = true;
+    };
+    window.addEventListener('message', onMessage);
+    frame.addEventListener('load', () => {
+      frame.contentWindow?.postMessage('{"event":"listening","id":1,"channel":"widget"}', YOUTUBE_ORIGIN);
+    }, { once: true });
+    window.setTimeout(() => {
+      window.removeEventListener('message', onMessage);
+      if (!answered && holder.contains(frame)) showVideoFallback(holder);
+    }, 6000);
+  };
+  const wireVideos = () => {
+    modalBody.querySelectorAll('.pd-video-frame[data-video-src]').forEach((holder) => {
+      const cover = holder.querySelector('.pd-video-cover');
+      if (!cover) return;
+      cover.addEventListener('click', () => playVideo(holder, cover.getAttribute('aria-label') || ''), { once: true });
+    });
+  };
+
   const closeModal = () => {
     closeLightbox();
+    // Dropping the player stops playback instead of leaving audio running behind the page.
+    modalBody.querySelectorAll('.pd-video-frame iframe').forEach((frame) => frame.remove());
     modal.classList.remove('open');
     document.body.style.overflow = '';
   };
@@ -884,6 +932,7 @@
       dialog.classList.add('is-rich');
       modalBody.innerHTML = detail.innerHTML;
       wireGallery();
+      wireVideos();
     } else {
       dialog.classList.remove('is-rich');
       modalBody.innerHTML = '<span class="site-modal__kicker"></span><h3></h3><p></p>';

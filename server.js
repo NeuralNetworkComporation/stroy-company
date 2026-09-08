@@ -78,8 +78,9 @@ const securityHeaders = () => {
     "font-src 'self' data:",
     "form-action 'self'",
     "frame-ancestors 'none'",
-    "frame-src https://www.openstreetmap.org",
-    "img-src 'self' data:",
+    "frame-src https://www.openstreetmap.org https://www.youtube-nocookie.com",
+    // i.ytimg.com serves the thumbnails the YouTube player draws once a video is started.
+    "img-src 'self' data: https://i.ytimg.com",
     "media-src 'self' https://cdn.peri.cloud",
     "object-src 'none'",
     "script-src 'self'",

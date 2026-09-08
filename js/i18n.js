@@ -310,7 +310,7 @@
     "хранит выбранный режим cookie.": ["stores the selected cookie mode.", "тандалган cookie режимин сактайт."],
     "хранит выбранный язык интерфейса. Эти cookie нужны для работы функций сайта.": ["stores the selected interface language. These cookies are required for site functions.", "интерфейстин тандалган тилин сактайт. Бул cookie файлдары сайттын функциялары үчүн зарыл."],
     "3. Необязательные сервисы": ["3. Optional services", "3. Кошумча кызматтар"],
-    "Сайт не подключает рекламную аналитику. Карта на странице контактов (OpenStreetMap) загружается автоматически и не использует рекламные или отслеживающие cookie. Переключение русского, кыргызского и английского языков работает внутри сайта и не использует внешний переводчик.": ["The site does not use advertising analytics. The map on the contacts page (OpenStreetMap) loads automatically and does not use advertising or tracking cookies. Russian, Kyrgyz and English versions work directly on the site without an external translation service.", "Сайт жарнамалык аналитиканы колдонбойт. Байланыш барагындагы карта (OpenStreetMap) автоматтык түрдө жүктөлөт жана жарнамалык же көзөмөлдөөчү cookie колдонбойт. Орус, кыргыз жана англис тилдери сайттын ичинде иштейт жана тышкы котормочуну колдонбойт."],
+    "Сайт не подключает рекламную аналитику. Карта на странице контактов (OpenStreetMap) загружается автоматически и не использует рекламные или отслеживающие cookie. Видео в карточке объекта подключается через YouTube в режиме без отслеживающих cookie (youtube-nocookie.com) и загружается только при открытии карточки. Переключение русского, кыргызского и английского языков работает внутри сайта и не использует внешний переводчик.": ["The site does not use advertising analytics. The map on the contacts page (OpenStreetMap) loads automatically and does not use advertising or tracking cookies. Video inside a project card is embedded through YouTube in its no-tracking-cookie mode (youtube-nocookie.com) and loads only when the card is opened. Russian, Kyrgyz and English versions work directly on the site without an external translation service.", "Сайт жарнамалык аналитиканы колдонбойт. Байланыш барагындагы карта (OpenStreetMap) автоматтык түрдө жүктөлөт жана жарнамалык же көзөмөлдөөчү cookie колдонбойт. Объекттин карточкасындагы видео YouTube аркылуу көзөмөлдөөчү cookie'сиз режимде (youtube-nocookie.com) туташтырылат жана карточка ачылганда гана жүктөлөт. Орус, кыргыз жана англис тилдери сайттын ичинде иштейт жана тышкы котормочуну колдонбойт."],
     "4. Как изменить выбор": ["4. Changing your choice", "4. Тандоону кантип өзгөртүү керек"],
     "Нажмите кнопку ниже, чтобы снова открыть баннер cookie и выбрать режим.": ["Click the button below to reopen the cookie banner and select a mode.", "Cookie баннерин кайра ачып, режимди тандоо үчүн төмөнкү баскычты басыңыз."],
     "Изменить настройки cookie": ["Change cookie settings", "Cookie жөндөөлөрүн өзгөртүү"],
@@ -444,7 +444,12 @@
     "Заказчик проекта": ["Project client", "Долбоордун буюртмачысы"],
     "ОсОО «Ананьево ГЭС»": ["Ananyevo HPP LLC", "«Ананьево ГЭС» ЖЧК"],
     "Ананьево ГЭС": ["Ananyevo HPP", "Ананьево ГЭС"],
-    "Заказчик Малой ГЭС «Боз-Учук» мощностью 5,4 МВт в Иссык-Кульской области. BERG HOUSE — генеральный подрядчик строительства.": ["Client of the 5.4 MW Boz-Uchuk small hydropower plant in the Issyk-Kul Region. BERG HOUSE was the general contractor.", "Ысык-Көл облусундагы 5,4 МВт кубаттуулуктагы «Боз-Учук» чакан ГЭСинин буюртмачысы. BERG HOUSE — курулуштун башкы подрядчысы."]
+    "Заказчик Малой ГЭС «Боз-Учук» мощностью 5,4 МВт в Иссык-Кульской области. BERG HOUSE — генеральный подрядчик строительства.": ["Client of the 5.4 MW Boz-Uchuk small hydropower plant in the Issyk-Kul Region. BERG HOUSE was the general contractor.", "Ысык-Көл облусундагы 5,4 МВт кубаттуулуктагы «Боз-Учук» чакан ГЭСинин буюртмачысы. BERG HOUSE — курулуштун башкы подрядчысы."],
+    "Видео не загрузилось": ["Video did not load", "Видео жүктөлгөн жок"],
+    "Возможная причина — VPN или блокировка стороннего контента.": ["A VPN or third-party content blocking is the likely cause.", "Мүмкүн болгон себеп — VPN же тышкы мазмунду бөгөттөө."],
+    "Смотреть на YouTube": ["Watch on YouTube", "YouTube'да көрүү"],
+    "Смотреть видео: Процесс строительства": ["Watch video: Construction process", "Видеону көрүү: Курулуш процесси"],
+    "Смотреть видео: Начало строительства": ["Watch video: Start of construction", "Видеону көрүү: Курулуштун башталышы"]
   };
 
   const languageIndexes = { en: 0, ky: 1 };
