@@ -45,6 +45,38 @@ npm run dev
 При добавлении новой фотографии сжимайте её перед коммитом и кладите рядом
 уменьшенную версию, если она нужна в мелком блоке.
 
+## Видео
+
+Видео хранится локально в `video/`, внешних плееров нет.
+
+- `video/hero-boz-uchuk.mp4` — фон первого экрана (H.264, без звука)
+- собственный плеер: `js/player.js` + стили `.bhp-*` в `css/style.css`
+
+Разметка плеера — пустая оболочка, всё остальное строит скрипт:
+
+```html
+<div class="bhp-player" tabindex="0"
+     data-video-src="video/имя-файла.mp4"
+     data-video-start="7"
+     data-video-fallback="https://youtu.be/..."
+     data-video-title="Название">
+  <video preload="none" playsinline poster="images/.../poster.jpg"></video>
+</div>
+```
+
+`data-video-start` — с какой секунды начинать (пропуск заставки).
+Пока `data-video-src` не указан, постер работает ссылкой на
+`data-video-fallback`, поэтому раздел не ломается без файла.
+
+Кодировать в H.264 (не HEVC — он не играет в части браузеров):
+
+```
+ffmpeg -i исходник.mp4 -an -c:v libx264 -profile:v high -pix_fmt yuv420p        -crf 26 -preset slow -movflags +faststart video/имя-файла.mp4
+```
+
+Перемотка требует Range-запросов — они реализованы в `server.js`;
+на стороннем хостинге убедитесь, что сервер отдаёт `206 Partial Content`.
+
 ## SEO
 
 - `robots.txt` и `sitemap.xml` в корне; при добавлении страницы обновите

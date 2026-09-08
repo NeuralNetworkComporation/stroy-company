@@ -127,6 +127,35 @@ const negotiateEncoding = (acceptEncoding) => {
   return null;
 };
 
+/**
+ * A single `bytes=` range, clamped to the file. Browsers seek in a video by
+ * asking for the byte window around the target frame, so without this the
+ * player can load a clip but never jump inside it.
+ */
+const parseRange = (header, size) => {
+  const match = /^bytes=(\d*)-(\d*)$/.exec(String(header || "").trim());
+  if (!match) return null;
+
+  const [, rawStart, rawEnd] = match;
+  if (rawStart === "" && rawEnd === "") return null;
+
+  let start;
+  let end;
+  if (rawStart === "") {
+    const suffix = Number(rawEnd);
+    if (!Number.isFinite(suffix) || suffix <= 0) return null;
+    start = Math.max(0, size - suffix);
+    end = size - 1;
+  } else {
+    start = Number(rawStart);
+    end = rawEnd === "" ? size - 1 : Number(rawEnd);
+  }
+
+  if (!Number.isFinite(start) || !Number.isFinite(end)) return null;
+  if (start > end || start >= size) return "unsatisfiable";
+  return { start, end: Math.min(end, size - 1) };
+};
+
 const notFoundPage = path.join(root, "404.html");
 
 /**
@@ -208,21 +237,35 @@ const server = http.createServer((req, res) => {
         ? negotiateEncoding(req.headers["accept-encoding"])
         : null;
 
+      // Only uncompressed responses can be served in byte ranges.
+      const range = encoding ? null : parseRange(req.headers.range, stat.size);
+      if (range === "unsatisfiable") {
+        sendText(res, 416, "Range not satisfiable", {
+          "content-range": `bytes */${stat.size}`,
+        });
+        return;
+      }
+
       if (encoding) {
         headers["content-encoding"] = encoding;
         headers["vary"] = "Accept-Encoding";
       } else {
-        headers["content-length"] = stat.size;
+        headers["accept-ranges"] = "bytes";
+        headers["content-length"] = range ? range.end - range.start + 1 : stat.size;
+        if (range) headers["content-range"] = `bytes ${range.start}-${range.end}/${stat.size}`;
       }
 
+      const status = range ? 206 : 200;
       if (req.method === "HEAD") {
-        res.writeHead(200, headers);
+        res.writeHead(status, headers);
         res.end();
         return;
       }
 
-      res.writeHead(200, headers);
-      const stream = fs.createReadStream(target);
+      res.writeHead(status, headers);
+      const stream = range
+        ? fs.createReadStream(target, { start: range.start, end: range.end })
+        : fs.createReadStream(target);
       stream.on("error", () => {
         if (!res.headersSent) sendText(res, 500, "Internal server error");
         else res.destroy();
