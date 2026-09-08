@@ -812,13 +812,59 @@
 
   const modal = document.createElement('div');
   modal.className = 'site-modal';
-  modal.innerHTML = '<div class="site-modal__backdrop" data-close-modal></div><article class="site-modal__dialog" role="dialog" aria-modal="true"><button class="site-modal__close" type="button" data-close-modal aria-label="Закрыть">×</button><div class="site-modal__media"><img class="site-modal__img" alt="" loading="lazy"></div><div class="site-modal__body"><span class="site-modal__kicker">BERG HOUSE</span><h3></h3><p></p></div></article>';
+  modal.innerHTML = '<div class="site-modal__backdrop" data-close-modal></div><article class="site-modal__dialog" role="dialog" aria-modal="true"><button class="site-modal__close" type="button" data-close-modal aria-label="Закрыть">×</button><div class="site-modal__media"><img class="site-modal__img" alt="" loading="lazy"></div><div class="site-modal__body"></div></article><div class="site-lightbox" hidden><button class="site-lightbox__close" type="button" data-close-lightbox aria-label="Закрыть">×</button><button class="site-lightbox__nav site-lightbox__nav--prev" type="button" data-shot-step="-1" aria-label="Предыдущее фото">‹</button><img class="site-lightbox__img" alt=""><button class="site-lightbox__nav site-lightbox__nav--next" type="button" data-shot-step="1" aria-label="Следующее фото">›</button></div>';
   document.body.appendChild(modal);
-  const closeModal = () => { modal.classList.remove('open'); document.body.style.overflow = ''; };
+  const dialog = modal.querySelector('.site-modal__dialog');
+  const modalBody = modal.querySelector('.site-modal__body');
+  const lightbox = modal.querySelector('.site-lightbox');
+  const lightboxImg = modal.querySelector('.site-lightbox__img');
+
+  // Photo viewer for the gallery inside a rich project card.
+  let shots = [];
+  let shotIndex = 0;
+  const showShot = (index) => {
+    if (!shots.length) return;
+    shotIndex = (index + shots.length) % shots.length;
+    const source = shots[shotIndex];
+    lightboxImg.src = source.currentSrc || source.src;
+    lightboxImg.alt = source.alt || '';
+  };
+  const closeLightbox = () => {
+    lightbox.hidden = true;
+    lightboxImg.removeAttribute('src');
+  };
+  const openLightbox = (index) => {
+    showShot(index);
+    lightbox.hidden = false;
+  };
+  lightbox.addEventListener('click', (e) => {
+    const step = e.target.closest('[data-shot-step]');
+    if (step) { showShot(shotIndex + Number(step.dataset.shotStep)); return; }
+    closeLightbox();
+  });
+  const wireGallery = () => {
+    shots = [...modalBody.querySelectorAll('.pd-shot img')];
+    shots.forEach((shot, index) => {
+      shot.parentElement.addEventListener('click', () => openLightbox(index));
+    });
+  };
+
+  const closeModal = () => {
+    closeLightbox();
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  };
   modal.querySelectorAll('[data-close-modal]').forEach(el => el.addEventListener('click', closeModal));
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape') { if (lightbox.hidden) closeModal(); else closeLightbox(); return; }
+    if (lightbox.hidden) return;
+    if (e.key === 'ArrowLeft') showShot(shotIndex - 1);
+    if (e.key === 'ArrowRight') showShot(shotIndex + 1);
+  });
   const openModal = (card) => {
     const translate = window.BH_I18N?.t || ((value) => value);
+    const detail = card.dataset.modalDetail ? document.getElementById(card.dataset.modalDetail) : null;
     const title = card.dataset.modalTitle || card.querySelector('h2,h3,h4,.service-title,.proj-name,.pcard-name,.cert-name')?.textContent?.trim() || 'BERG HOUSE';
     const text = card.dataset.modalText || card.querySelector('p,.service-desc,.step-desc,.cert-desc')?.textContent?.trim() || 'Описание будет добавлено после согласования материалов.';
     const media = modal.querySelector('.site-modal__media');
@@ -832,11 +878,22 @@
       img.removeAttribute('src');
       media.classList.remove('has-img');
     }
-    modal.querySelector('.site-modal__kicker').textContent = translate(card.dataset.modalKicker || 'BERG HOUSE');
-    modal.querySelector('h3').textContent = translate(title);
-    modal.querySelector('p').textContent = translate(text);
+    shots = [];
+    closeLightbox();
+    if (detail) {
+      dialog.classList.add('is-rich');
+      modalBody.innerHTML = detail.innerHTML;
+      wireGallery();
+    } else {
+      dialog.classList.remove('is-rich');
+      modalBody.innerHTML = '<span class="site-modal__kicker"></span><h3></h3><p></p>';
+      modalBody.querySelector('.site-modal__kicker').textContent = translate(card.dataset.modalKicker || 'BERG HOUSE');
+      modalBody.querySelector('h3').textContent = translate(title);
+      modalBody.querySelector('p').textContent = translate(text);
+    }
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
+    dialog.scrollTop = 0;
   };
   document.querySelectorAll('.service-card,.svc-block,.proj,.pcard,.post-card,.post-small-row,.feat,.cert-item').forEach((card) => {
     card.setAttribute('tabindex','0');

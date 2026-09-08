@@ -101,8 +101,8 @@ for (const file of htmlFiles) {
 }
 
 const homeHtml = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-if ((homeHtml.match(/\bclass=["'][^"']*\bpartner-card\b/gi) || []).length !== 2) {
-  errors.push('index.html: expected two verified partner cards');
+if ((homeHtml.match(/\bclass=["'][^"']*\bpartner-card\b/gi) || []).length !== 3) {
+  errors.push('index.html: expected three verified partner cards');
 }
 if (/partner-placeholder|logo-img--mobile|brand-mark-dark/i.test(homeHtml)) {
   errors.push('index.html: obsolete partner or mobile-logo markup found');
