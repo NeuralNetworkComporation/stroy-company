@@ -6,7 +6,9 @@ const tests = [
   ['GET', '/pages/about.html', 200],
   ['GET', '/pages/services.html', 200],
   ['GET', '/pages/projects.html', 200],
-  ['GET', '/pages/blog.html', 200],
+  // Blog is temporarily unpublished: the file lives on disk as
+  // pages/blog.html.disabled, so the extension mismatch alone should 404 it.
+  ['GET', '/pages/blog.html', 404],
   ['GET', '/pages/contacts.html', 200],
   ['GET', '/pages/privacy.html', 200],
   ['GET', '/pages/cookies.html', 200],

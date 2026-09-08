@@ -114,7 +114,8 @@
         '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20V9.5L12 4l8 5.5V20"/><path d="M8.5 20v-6h7v6"/><path d="M3 20h18"/></svg>',
         '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h7v5H4zM13 4h7v8h-7zM4 14h7v6H4zM13 14h7v6h-7z"/></svg>',
         '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v14H4z"/><path d="M8 15l3-3 2.5 2.5L16 12l4 4"/><path d="M8 9h.01"/></svg>',
-        '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 3h9l3 3v15H6z"/><path d="M14 3v4h4M9 11h6M9 15h6M9 19h4"/></svg>',
+        // The blog's notebook icon was here; it's dropped along with the nav
+        // item so Contacts (now 4th) keeps getting the phone icon below.
         '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.2 3.5l3 3-2.1 2.4a15.8 15.8 0 0 0 7 7l2.4-2.1 3 3-1.7 3c-.5.8-1.4 1.2-2.3 1-6.7-1.5-11.8-6.6-13.3-13.3-.2-.9.2-1.8 1-2.3z"/></svg>'
       ];
       mobileNav.id ||= 'mobile-navigation';
