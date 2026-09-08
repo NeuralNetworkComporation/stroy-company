@@ -812,7 +812,7 @@
 
   const modal = document.createElement('div');
   modal.className = 'site-modal';
-  modal.innerHTML = '<div class="site-modal__backdrop" data-close-modal></div><article class="site-modal__dialog" role="dialog" aria-modal="true"><button class="site-modal__close" type="button" data-close-modal aria-label="Закрыть">×</button><div class="site-modal__media"><div class="site-modal__play">▶</div></div><div class="site-modal__body"><span class="site-modal__kicker">BERG HOUSE</span><h3></h3><p></p></div></article>';
+  modal.innerHTML = '<div class="site-modal__backdrop" data-close-modal></div><article class="site-modal__dialog" role="dialog" aria-modal="true"><button class="site-modal__close" type="button" data-close-modal aria-label="Закрыть">×</button><div class="site-modal__media"><img class="site-modal__img" alt="" loading="lazy"></div><div class="site-modal__body"><span class="site-modal__kicker">BERG HOUSE</span><h3></h3><p></p></div></article>';
   document.body.appendChild(modal);
   const closeModal = () => { modal.classList.remove('open'); document.body.style.overflow = ''; };
   modal.querySelectorAll('[data-close-modal]').forEach(el => el.addEventListener('click', closeModal));
@@ -820,8 +820,19 @@
   const openModal = (card) => {
     const translate = window.BH_I18N?.t || ((value) => value);
     const title = card.dataset.modalTitle || card.querySelector('h2,h3,h4,.service-title,.proj-name,.pcard-name,.cert-name')?.textContent?.trim() || 'BERG HOUSE';
-    const text = card.dataset.modalText || card.querySelector('p,.service-desc,.step-desc,.cert-desc')?.textContent?.trim() || 'Описание будет добавлено после согласования материалов. Видео-блок подготовлен как место для будущего ролика.';
-    modal.querySelector('.site-modal__kicker').textContent = translate(card.dataset.modalKicker || 'Видео будет добавлено после согласования');
+    const text = card.dataset.modalText || card.querySelector('p,.service-desc,.step-desc,.cert-desc')?.textContent?.trim() || 'Описание будет добавлено после согласования материалов.';
+    const media = modal.querySelector('.site-modal__media');
+    const img = modal.querySelector('.site-modal__img');
+    const sourceImg = card.querySelector('img');
+    if (sourceImg?.src) {
+      img.src = sourceImg.currentSrc || sourceImg.src;
+      img.alt = sourceImg.alt || title;
+      media.classList.add('has-img');
+    } else {
+      img.removeAttribute('src');
+      media.classList.remove('has-img');
+    }
+    modal.querySelector('.site-modal__kicker').textContent = translate(card.dataset.modalKicker || 'BERG HOUSE');
     modal.querySelector('h3').textContent = translate(title);
     modal.querySelector('p').textContent = translate(text);
     modal.classList.add('open');
