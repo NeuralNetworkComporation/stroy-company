@@ -296,7 +296,7 @@
    }
    .hero-overlay {
      position:absolute; inset:0; z-index:2;
-     background:linear-gradient(140deg,rgba(10,29,58,.82) 0%,rgba(10,29,58,.5) 55%,rgba(10,29,58,.68) 100%);
+     background:linear-gradient(140deg,rgba(10,29,58,.86) 0%,rgba(10,29,58,.64) 55%,rgba(10,29,58,.76) 100%);
    }
    .hero-noise {
      position:absolute; inset:0; z-index:3; opacity:.35; pointer-events:none;
@@ -321,7 +321,7 @@
    .hero-title .italic { font-style:italic; color:var(--brass); }
    .hero-desc {
      font-size:.96rem; font-weight:300; line-height:1.8;
-     color:rgba(255,255,255,.55); max-width:460px; margin-bottom:40px;
+     color:rgba(255,255,255,.84); max-width:460px; margin-bottom:40px;
      opacity:0; transform:translateY(24px);
      animation:slideUp .9s var(--ease-out) .75s forwards;
    }

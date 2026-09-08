@@ -7,7 +7,7 @@ const projectRoot = path.resolve(__dirname, '..');
 const releaseRoot = path.join(projectRoot, 'release');
 const staticRoot = path.join(releaseRoot, 'static');
 const nodeRoot = path.join(releaseRoot, 'node');
-const publicDirectories = ['css', 'images', 'js', 'pages'];
+const publicDirectories = ['css', 'images', 'js', 'pages', 'video'];
 const publicAssets = [
   'apple-touch-icon.png',
   'favicon-16.png',

@@ -589,7 +589,10 @@
     "Сварочные работы с необходимыми допусками": ["Welding by crews with the required approvals", "Талап кылынган уруксаттары бар ширетүү иштери"],
     "Исполнительный контроль отдела ПТО": ["As-built control by the technical department", "Өндүрүштүк-техникалык бөлүмдүн аткаруу контролу"],
     "Геодезическое сопровождение": ["Surveying support", "Геодезиялык коштоо"],
-    "Электромонтаж и ЛЭП": ["Electrical works and power lines", "Электромонтаж жана ЭБЛ"]
+    "Электромонтаж и ЛЭП": ["Electrical works and power lines", "Электромонтаж жана ЭБЛ"],
+    "Монтаж напорного трубопровода": ["Penstock installation", "Басымдуу түтүктү монтаждоо"],
+    "Опалубка монолитных конструкций": ["Formwork for cast-in-place structures", "Монолиттик конструкциялардын калыбы"],
+    "Подстанция и выдача мощности": ["Substation and power evacuation", "Подстанция жана кубаттуулукту берүү"]
   };
 
   const languageIndexes = { en: 0, ky: 1 };

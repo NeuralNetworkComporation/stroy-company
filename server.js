@@ -18,6 +18,7 @@ const publicRules = new Map([
   ["images", imageExtensions],
   ["js", new Set([".js"])],
   ["pages", new Set([".html"])],
+  ["video", new Set([".mp4", ".webm"])],
 ]);
 const rootPublicFiles = new Set([
   "404.html",
@@ -42,6 +43,8 @@ const mime = {
   ".avif": "image/avif",
   ".txt": "text/plain; charset=utf-8",
   ".xml": "application/xml; charset=utf-8",
+  ".mp4": "video/mp4",
+  ".webm": "video/webm",
 };
 
 const safeResolve = (urlPath) => {
@@ -81,7 +84,7 @@ const securityHeaders = () => {
     "frame-src https://www.openstreetmap.org https://www.youtube-nocookie.com",
     // i.ytimg.com serves the thumbnails the YouTube player draws once a video is started.
     "img-src 'self' data: https://i.ytimg.com",
-    "media-src 'self' https://cdn.peri.cloud",
+    "media-src 'self'",
     "object-src 'none'",
     "script-src 'self'",
     "style-src 'self' 'unsafe-inline'",
