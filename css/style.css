@@ -3315,3 +3315,111 @@ a[href^="tel:"] {
   .site-lightbox { gap:8px; padding:16px; }
   .site-lightbox__nav { width:42px; height:42px; font-size:1.4rem; }
 }
+
+/* ---------- Technology / control cards + full-cycle chain ---------- */
+.advantages {
+  position:relative;
+  padding:110px 0 118px;
+  background:var(--ivory);
+}
+.adv-head {
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(280px,.62fr);
+  gap:clamp(32px,7vw,110px);
+  align-items:end;
+  margin-bottom:48px;
+}
+.adv-heading { max-width:760px; margin-top:16px; }
+.adv-copy {
+  max-width:460px;
+  color:var(--muted);
+  font-size:.98rem;
+  line-height:1.75;
+}
+.adv-grid {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+}
+.adv-card {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding:30px 26px 32px;
+  background:#fff;
+  transition:background .3s;
+}
+/* Card one spans two columns so seven cards fill two rows exactly. */
+.adv-card:nth-child(1) { grid-column:span 2; }
+.adv-card:hover { background:#fbfcfe; }
+.adv-key {
+  font-family:var(--font-display);
+  font-size:1.5rem;
+  font-weight:700;
+  letter-spacing:-.02em;
+  color:var(--dark);
+}
+.adv-val {
+  color:var(--muted);
+  font-size:.86rem;
+  line-height:1.65;
+}
+
+.cycle {
+  position:relative;
+  padding:96px 0 104px;
+  background:var(--onyx);
+  color:#fff;
+}
+.cycle-head { margin-bottom:44px; }
+.cycle-head h2 { margin-top:16px; color:#fff; }
+.cycle-head h2 em { font-style:italic; color:var(--brass); }
+.cycle-head .label { color:var(--brass); }
+.cycle-chain {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.cycle-step {
+  display:grid;
+  gap:8px;
+  padding:20px 20px 22px;
+  border:1px solid rgba(255,255,255,.12);
+  border-left:2px solid var(--brass);
+  background:rgba(255,255,255,.04);
+  transition:background .3s,border-color .3s;
+}
+.cycle-step:hover { background:rgba(255,255,255,.08); }
+.cycle-num {
+  font-family:var(--font-display);
+  font-size:.76rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  color:var(--brass);
+}
+.cycle-name {
+  font-size:.88rem;
+  font-weight:700;
+  line-height:1.4;
+  color:#fff;
+}
+
+@media (max-width:960px) {
+  .advantages { padding:84px 0 88px; }
+  .adv-head { grid-template-columns:1fr; gap:18px; align-items:start; }
+  .adv-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .adv-card:nth-child(1) { grid-column:span 2; }
+  .cycle { padding:76px 0 82px; }
+  .cycle-chain { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:560px) {
+  .adv-grid { grid-template-columns:1fr; }
+  .adv-card:nth-child(1) { grid-column:span 1; }
+  .adv-card { padding:24px 21px 26px; }
+  .cycle-chain { grid-template-columns:1fr; }
+}
