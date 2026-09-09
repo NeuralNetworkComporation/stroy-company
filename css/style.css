@@ -3640,6 +3640,18 @@ a[href^="tel:"] {
   font-size:.86rem;
   line-height:1.65;
 }
+.adv-card--logo { justify-content:flex-start; }
+.adv-logo {
+  position:relative;
+  z-index:1;
+  display:block;
+  height:36px;
+  width:auto;
+  max-width:150px;
+  object-fit:contain;
+  object-position:left center;
+  margin-bottom:4px;
+}
 
 .cycle {
   position:relative;
